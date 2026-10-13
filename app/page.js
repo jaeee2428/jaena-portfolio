@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import { profile, quickFacts, projects, slugify } from '@/lib/data';
 import HeroScene from '@/components/HeroScene';
+import MainProject from '@/components/MainProject';
 import { Arrow, Shape, Squiggle } from '@/components/Doodles';
 
 export default function HomePage() {
-    const featured = projects.slice(0, 5);
+    const main = projects.find((p) => p.featured);
+    const featured = projects.filter((p) => !p.featured).slice(0, 5);
     return (
         <div className="container">
             {/* Hero */}
@@ -40,6 +42,8 @@ export default function HomePage() {
                 </div>
             </section>
 
+            {main && <MainProject project={main} />}
+
             {/* Now */}
             <section className="now" id="now">
                 <h2 className="label">Right now</h2>
@@ -73,7 +77,7 @@ export default function HomePage() {
             {/* Selected work */}
             <section className="section">
                 <div className="section-head">
-                    <h2 className="section-title">Selected work</h2>
+                    <h2 className="section-title">More work</h2>
                     <Link href="/projects" className="text-link">
                         All {projects.length} projects →
                     </Link>

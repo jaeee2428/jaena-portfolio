@@ -241,42 +241,53 @@ function Desk({ hovered, setHovered }) {
     );
 }
 
-function Tree() {
+function Tree({ hovered, setHovered }) {
     const crown = useRef();
     useFrame(({ clock }) => {
-        if (crown.current) crown.current.rotation.z = Math.sin(clock.elapsedTime * 1.3) * 0.035;
+        if (!crown.current) return;
+        const t = clock.elapsedTime;
+        // sways more while hovered, like a gust passing through
+        crown.current.rotation.z = Math.sin(t * (hovered === 'tree' ? 3.2 : 1.3)) * (hovered === 'tree' ? 0.09 : 0.035);
     });
     return (
-        <group position={[-1.15, 0.19, -0.75]}>
-            <mesh position={[0, 0.45, 0]} castShadow>
-                <cylinderGeometry args={[0.07, 0.12, 0.9, 6]} />
-                <Mat color={C.woodDark} />
-            </mesh>
-            <group ref={crown} position={[0, 0.9, 0]}>
-                {[
-                    [0, 0.2, 0, 0.5, C.leaf],
-                    [0.32, 0.05, 0.1, 0.36, C.leafLight],
-                    [-0.3, 0.08, -0.05, 0.38, C.leafLight],
-                    [0.02, 0.48, 0.05, 0.32, C.leafLight],
-                ].map(([x, y, z, r, col], i) => (
-                    <mesh key={i} position={[x, y, z]} castShadow>
-                        <icosahedronGeometry args={[r, 0]} />
-                        <Mat color={col} />
-                    </mesh>
-                ))}
-                {/* mangoes */}
-                {[
-                    [0.25, -0.15, 0.32],
-                    [-0.35, -0.12, 0.25],
-                    [0.1, 0.05, 0.48],
-                ].map((p, i) => (
-                    <mesh key={i} position={p} scale={[0.06, 0.08, 0.06]}>
-                        <sphereGeometry args={[1, 8, 6]} />
-                        <Mat color={C.butter} />
-                    </mesh>
-                ))}
+        <Hotspot
+            id="tree"
+            label="main project · Garden of Almira"
+            href="/projects#the-garden-of-almira"
+            setHovered={setHovered}
+            labelOffset={[-1.15, 2.05, -0.75]}
+        >
+            <group position={[-1.15, 0.19, -0.75]}>
+                <mesh position={[0, 0.45, 0]} castShadow>
+                    <cylinderGeometry args={[0.07, 0.12, 0.9, 6]} />
+                    <Mat color={C.woodDark} />
+                </mesh>
+                <group ref={crown} position={[0, 0.9, 0]}>
+                    {[
+                        [0, 0.2, 0, 0.5, C.leaf],
+                        [0.32, 0.05, 0.1, 0.36, C.leafLight],
+                        [-0.3, 0.08, -0.05, 0.38, C.leafLight],
+                        [0.02, 0.48, 0.05, 0.32, C.leafLight],
+                    ].map(([x, y, z, r, col], i) => (
+                        <mesh key={i} position={[x, y, z]} castShadow>
+                            <icosahedronGeometry args={[r, 0]} />
+                            <Mat color={col} />
+                        </mesh>
+                    ))}
+                    {/* mangoes */}
+                    {[
+                        [0.25, -0.15, 0.32],
+                        [-0.35, -0.12, 0.25],
+                        [0.1, 0.05, 0.48],
+                    ].map((p, i) => (
+                        <mesh key={i} position={p} scale={[0.06, 0.08, 0.06]}>
+                            <sphereGeometry args={[1, 8, 6]} />
+                            <Mat color={C.butter} />
+                        </mesh>
+                    ))}
+                </group>
             </group>
-        </group>
+        </Hotspot>
     );
 }
 
@@ -467,7 +478,7 @@ function Scene({ reduced, labelRef, onHover }) {
             <group ref={root} position={[0, -0.35, 0]}>
                 <Island />
                 <Desk hovered={hovered} setHovered={setHovered} />
-                <Tree />
+                <Tree hovered={hovered} setHovered={setHovered} />
                 <MapPin hovered={hovered} setHovered={setHovered} />
                 <GameCube hovered={hovered} setHovered={setHovered} />
                 <Plane hovered={hovered} setHovered={setHovered} />
