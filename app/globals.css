@@ -564,8 +564,14 @@ a {
     scroll-margin-top: 90px;
 }
 
+/* project you jumped to (e.g. from the 3D island): a card that sits slightly outside the column */
 .entry:target {
-    background: linear-gradient(90deg, var(--card), transparent);
+    margin: 20px -32px;
+    padding: 44px 32px;
+    background: var(--card);
+    border: 1.5px solid var(--ink);
+    border-radius: 22px;
+    box-shadow: 5px 5px 0 var(--butter);
 }
 
 .entry-meta {
@@ -979,6 +985,12 @@ a {
     .entry {
         grid-template-columns: 1fr;
         gap: 18px;
+    }
+
+    .entry:target {
+        margin: 16px -4px;
+        padding: 26px 16px;
+        box-shadow: 3px 3px 0 var(--butter);
     }
 
     .entry-meta {
