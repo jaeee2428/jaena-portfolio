@@ -1,62 +1,63 @@
 import { profile } from '@/lib/data';
+import { Shape, Squiggle } from '@/components/Doodles';
 
 export const metadata = { title: 'Contact' };
 
 export default function ContactPage() {
     const items = [
-        { mark: '@', label: 'Personal email', value: profile.email, href: `mailto:${profile.email}` },
-        { mark: 'UP', label: 'University email', value: profile.uniEmail, href: `mailto:${profile.uniEmail}` },
-        { mark: 'in', label: 'LinkedIn', value: 'linkedin.com/in/princess-jaena-marie-de-la-peña', href: profile.linkedin },
-        { mark: 'GH', label: 'GitHub', value: 'github.com/jaeee2428', href: profile.github },
-        { mark: 'PH', label: 'Location', value: profile.location, href: null },
+        { label: 'University email', value: profile.uniEmail, href: `mailto:${profile.uniEmail}` },
+        { label: 'LinkedIn', value: 'Princess Jaena Marie De La Peña', href: profile.linkedin },
+        { label: 'GitHub', value: 'jaeee2428', href: profile.github },
+        { label: 'Based in', value: profile.location, href: null },
     ];
 
     return (
         <div className="container">
-            <div className="page-head">
-                <span className="kicker">Say hi</span>
+            <header className="page-head">
+                <p className="hand">say hi</p>
                 <h1 className="page-title">Contact</h1>
                 <p className="page-lead">
-                    Internships, project collabs, hackathons, volunteer gigs, or just a hello. My inbox
-                    is open and I usually reply within a day or two.
+                    Internships, project collabs, hackathons, volunteer gigs, or just a hello. My inbox is
+                    open and I usually reply within a day or two.
                 </p>
-            </div>
+            </header>
 
-            <section className="section">
-                <div className="contact-grid">
-                    <div className="contact-list">
-                        {items.map((it) => (
-                            <div className="card contact-item" key={it.label}>
-                                <span className="ico">{it.mark}</span>
-                                <div>
-                                    <div className="t">{it.label}</div>
-                                    {it.href ? (
-                                        <a
-                                            className="d"
-                                            href={it.href}
-                                            target={it.href.startsWith('http') ? '_blank' : undefined}
-                                            rel="noreferrer"
-                                        >
-                                            {it.value}
-                                        </a>
-                                    ) : (
-                                        <div className="d">{it.value}</div>
-                                    )}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+            <section className="contact">
+                <a className="big-mail" href={`mailto:${profile.email}`}>
+                    {profile.email}
+                    <Squiggle />
+                </a>
 
-                    <div className="cta-box">
-                        <h3>Grab a copy of my CV</h3>
-                        <p>
-                            Experience, projects, leadership, and volunteering in one file. Handy for
-                            applications and referrals.
-                        </p>
-                        <a className="btn invert" href={profile.cvUrl} download>
-                            Download CV ↓
-                        </a>
+                <dl className="contact-list">
+                    {items.map((it) => (
+                        <div key={it.label}>
+                            <dt>{it.label}</dt>
+                            <dd>
+                                {it.href ? (
+                                    <a
+                                        href={it.href}
+                                        target={it.href.startsWith('http') ? '_blank' : undefined}
+                                        rel="noreferrer"
+                                    >
+                                        {it.value}
+                                    </a>
+                                ) : (
+                                    it.value
+                                )}
+                            </dd>
+                        </div>
+                    ))}
+                </dl>
+
+                <div className="cv-note">
+                    <Shape accent="yellow" index={4} size={48} className="wobble" />
+                    <div>
+                        <h2>Need the CV?</h2>
+                        <p>Experience, projects, leadership, and volunteering in one PDF.</p>
                     </div>
+                    <a className="btn" href={profile.cvUrl} download>
+                        Download CV
+                    </a>
                 </div>
             </section>
         </div>

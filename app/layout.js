@@ -1,6 +1,15 @@
 import './globals.css';
+import { Fraunces, Instrument_Sans, Caveat } from 'next/font/google';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
+
+const display = Fraunces({
+    subsets: ['latin'],
+    axes: ['SOFT', 'WONK', 'opsz'],
+    variable: '--font-display',
+});
+const body = Instrument_Sans({ subsets: ['latin'], variable: '--font-body' });
+const hand = Caveat({ subsets: ['latin'], weight: ['500', '700'], variable: '--font-hand' });
 
 export const metadata = {
     title: {
@@ -13,10 +22,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
+        <html lang="en" className={`${display.variable} ${body.variable} ${hand.variable}`}>
             <body>
                 <SiteHeader />
-                {children}
+                <main>{children}</main>
                 <SiteFooter />
             </body>
         </html>

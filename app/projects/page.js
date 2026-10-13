@@ -1,61 +1,68 @@
-import { projects } from '@/lib/data';
+import { projects, slugify } from '@/lib/data';
+import { Shape } from '@/components/Doodles';
 
 export const metadata = { title: 'Projects' };
+
+// Projects that involve 3D / immersive work get a little sticker.
+const THREE_D = ['Unity', 'Blender', 'Three.js', 'VR / spatial computing', 'Godot'];
 
 export default function ProjectsPage() {
     return (
         <div className="container">
-            <div className="page-head">
-                <span className="kicker">Selected work</span>
+            <header className="page-head">
+                <p className="hand">things I&apos;ve built</p>
                 <h1 className="page-title">Projects</h1>
                 <p className="page-lead">
-                    A mix of research, hackathons, game jams, and coursework. GIS climate tools, a VR
-                    waste-segregation game, business-planning apps, and some games I actually enjoyed
+                    Research, hackathons, game jams, and coursework: a GIS climate tool, a VR
+                    waste-segregation game, business-planning apps, and a few games I genuinely enjoyed
                     making.
                 </p>
-            </div>
+            </header>
 
-            <section className="section grid grid-2">
-                {projects.map((p) => (
-                    <article className="card project-card" key={p.title}>
-                        <div className="project-top">
-                            <div>
-                                <span className="tag">{p.type}</span>
-                                <h3>{p.title}</h3>
-                                <div className="sub">{p.subtitle}</div>
-                                <div className="role">
-                                    {p.role}
-                                    {p.when && p.when !== '—' ? ` · ${p.when}` : ''}
-                                </div>
+            <section className="entries">
+                {projects.map((p, i) => {
+                    const is3d = p.tech.some((t) => THREE_D.includes(t));
+                    return (
+                        <article className="entry" id={slugify(p.title)} key={p.title}>
+                            <div className="entry-meta">
+                                <span className="entry-num">{String(i + 1).padStart(2, '0')}</span>
+                                <Shape accent={p.accent} index={i} size={44} />
+                                <dl>
+                                    {p.when && p.when !== '—' && (
+                                        <>
+                                            <dt>When</dt>
+                                            <dd>{p.when}</dd>
+                                        </>
+                                    )}
+                                    <dt>Role</dt>
+                                    <dd>{p.role}</dd>
+                                    <dt>Made with</dt>
+                                    <dd>{p.tech.join(', ')}</dd>
+                                </dl>
                             </div>
-                            <span className={`accent-dot a-dot ${p.accent}`} />
-                        </div>
-
-                        {p.honors?.length > 0 && (
-                            <div className="honors">
-                                {p.honors.map((h) => (
-                                    <span key={h}>
-                                        <b>{h}</b>
-                                    </span>
-                                ))}
+                            <div className="entry-body">
+                                <p className="entry-type">
+                                    {p.type}
+                                    {is3d && <span className="sticker">3D / XR</span>}
+                                </p>
+                                <h2>{p.title}</h2>
+                                <p className="entry-sub">{p.subtitle}</p>
+                                {p.honors?.length > 0 && (
+                                    <ul className="honors">
+                                        {p.honors.map((h) => (
+                                            <li key={h}>{h}</li>
+                                        ))}
+                                    </ul>
+                                )}
+                                <ul className="points">
+                                    {p.points.map((pt, j) => (
+                                        <li key={j}>{pt}</li>
+                                    ))}
+                                </ul>
                             </div>
-                        )}
-
-                        <ul style={{ margin: '2px 0 0', paddingLeft: 20 }}>
-                            {p.points.map((pt, i) => (
-                                <li key={i}>{pt}</li>
-                            ))}
-                        </ul>
-
-                        <div className="tags">
-                            {p.tech.map((t) => (
-                                <span className="chip" key={t}>
-                                    {t}
-                                </span>
-                            ))}
-                        </div>
-                    </article>
-                ))}
+                        </article>
+                    );
+                })}
             </section>
         </div>
     );
