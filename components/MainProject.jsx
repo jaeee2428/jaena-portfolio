@@ -9,7 +9,6 @@ export default function MainProject({ project: p }) {
     return (
         <section className="main-project" aria-labelledby="main-project-title">
             <div className="mp-copy">
-                <p className="label">Main project</p>
                 <p className="mp-status">
                     <span className="mp-pulse" aria-hidden="true" />
                     {p.status}

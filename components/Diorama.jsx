@@ -252,7 +252,7 @@ function Tree({ hovered, setHovered }) {
     return (
         <Hotspot
             id="tree"
-            label="main project · Garden of Almira"
+            label="Garden of Almira"
             href="/projects#the-garden-of-almira"
             setHovered={setHovered}
             labelOffset={[-1.15, 2.05, -0.75]}

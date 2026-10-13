@@ -14,8 +14,8 @@ export default function ProjectsPage() {
                 <p className="hand">things I&apos;ve built</p>
                 <h1 className="page-title">Projects</h1>
                 <p className="page-lead">
-                    Led by my main project, a walkable 3D folk garden of Cebu, plus research, hackathons,
-                    game jams, and coursework: a GIS climate tool, a VR waste-segregation game,
+                    Led by The Garden of Almira, a walkable 3D folk garden of Cebu, plus research,
+                    hackathons, game jams, and coursework: a GIS climate tool, a VR waste-segregation game,
                     business-planning apps, and a few games I genuinely enjoyed making.
                 </p>
             </header>
@@ -44,7 +44,6 @@ export default function ProjectsPage() {
                             <div className="entry-body">
                                 <p className="entry-type">
                                     {p.type}
-                                    {p.featured && <span className="sticker featured-tag">main project</span>}
                                     {is3d && <span className="sticker">3D / XR</span>}
                                 </p>
                                 <h2>{p.title}</h2>
