@@ -4,7 +4,7 @@ import { Shape } from '@/components/Doodles';
 export const metadata = { title: 'Projects' };
 
 // Projects that involve 3D / immersive work get a little sticker.
-const THREE_D = ['Unity', 'Blender', 'Three.js', 'VR / spatial computing', 'Godot'];
+const THREE_D = ['Unity', 'Blender', 'Three.js', 'Babylon.js', 'VR / spatial computing', 'Godot'];
 
 export default function ProjectsPage() {
     return (
@@ -59,6 +59,11 @@ export default function ProjectsPage() {
                                         <li key={j}>{pt}</li>
                                     ))}
                                 </ul>
+                                {p.link && (
+                                    <a className="entry-link" href={p.link} target="_blank" rel="noreferrer">
+                                        Open the live site ↗
+                                    </a>
+                                )}
                             </div>
                         </article>
                     );

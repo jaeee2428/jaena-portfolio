@@ -3,8 +3,6 @@ import { profile, quickFacts, projects, slugify } from '@/lib/data';
 import HeroScene from '@/components/HeroScene';
 import { Arrow, Shape, Squiggle } from '@/components/Doodles';
 
-export const metadata = { title: 'Home' };
-
 export default function HomePage() {
     const featured = projects.slice(0, 5);
     return (

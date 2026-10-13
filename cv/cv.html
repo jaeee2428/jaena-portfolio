@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>De La Peña, Princess Jaena Marie — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=block" rel="stylesheet">
+<style>
+    /* Source for public/DeLaPena_PrincessJaenaCV.pdf — build with cv/build.sh */
+    @page {
+        size: A4;
+        margin: 15mm 16mm 16mm;
+        @bottom-left {
+            content: "Princess Jaena Marie O. De La Peña · CV";
+            font: 7.5pt 'Instrument Sans', sans-serif;
+            color: #8c7d73;
+        }
+        @bottom-right {
+            content: counter(page) " / " counter(pages);
+            font: 7.5pt 'Instrument Sans', sans-serif;
+            color: #8c7d73;
+        }
+    }
+
+    :root {
+        --ink: #2b2320;
+        --soft: #5c4f48;
+        --faint: #8c7d73;
+        --accent: #c4472f;
+        --rule: #d9cbb6;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        margin: 0;
+        color: var(--ink);
+        font: 9.4pt/1.42 'Instrument Sans', system-ui, sans-serif;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* header */
+    header {
+        padding-bottom: 10px;
+        border-bottom: 1.4pt solid var(--ink);
+    }
+
+    h1 {
+        font: 600 23pt/1 'Fraunces', Georgia, serif;
+        letter-spacing: -0.01em;
+        margin: 0;
+    }
+
+    h1 span { font-weight: 400; }
+
+    .tagline {
+        margin: 6px 0 0;
+        color: var(--soft);
+        font-size: 10pt;
+    }
+
+    .contact {
+        margin-top: 6px;
+        font-size: 8.6pt;
+        line-height: 1.6;
+        color: var(--soft);
+    }
+
+    .contact span + span::before {
+        content: "·";
+        margin: 0 7px;
+        color: var(--accent);
+    }
+
+    .contact a { color: var(--ink); }
+
+    /* sections */
+    section { margin-top: 13px; }
+
+    h2 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font: 600 11.5pt/1 'Fraunces', Georgia, serif;
+        margin: 0 0 7px;
+        color: var(--ink);
+    }
+
+    h2::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+        flex: none;
+    }
+
+    h2::after {
+        content: "";
+        flex: 1;
+        border-top: 0.6pt solid var(--rule);
+    }
+
+    .summary { margin: 0; color: var(--soft); }
+
+    .entry { margin-bottom: 9px; break-inside: avoid; }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 14px;
+    }
+
+    .role { font-weight: 600; }
+
+    .role em {
+        margin-left: 2px;
+        font-style: normal;
+        font-weight: 400;
+        color: var(--soft);
+    }
+
+    .when {
+        flex: none;
+        font-size: 8.6pt;
+        color: var(--faint);
+        font-variant-numeric: tabular-nums;
+    }
+
+    .meta {
+        font-size: 8.6pt;
+        color: var(--soft);
+    }
+
+    .meta a { color: var(--accent); }
+
+    ul {
+        margin: 3px 0 0;
+        padding-left: 13px;
+    }
+
+    li { margin: 1.5px 0; }
+
+    li::marker { color: var(--accent); }
+
+    /* skills: label column + items, single text flow for ATS */
+    .skills { display: grid; grid-template-columns: 34mm 1fr; gap: 2px 12px; margin: 0; }
+    .skills dt { font-weight: 600; }
+    .skills dd { margin: 0; color: var(--soft); }
+
+    .compact li { margin: 1px 0; }
+    .compact b { font-weight: 600; }
+    .compact span { color: var(--faint); }
+
+    .refs-note { margin: 0; color: var(--soft); }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Princess Jaena Marie <span>O.</span> De La Peña</h1>
+    <p class="tagline">Computer Science, UP Cebu · Operations, automation &amp; immersive tech</p>
+    <div class="contact">
+        <span><a href="mailto:princessjaena.delapena24@gmail.com">princessjaena.delapena24@gmail.com</a></span><span><a href="mailto:podelapena2@up.edu.ph">podelapena2@up.edu.ph</a></span><span>Talisay City, Cebu, Philippines</span><br>
+        <span><a href="https://jaena-portfolio.vercel.app">jaena-portfolio.vercel.app</a></span><span><a href="https://github.com/jaeee2428">github.com/jaeee2428</a></span><span><a href="https://www.linkedin.com/in/princess-jaena-marie-de-la-pe%C3%B1a-951286383/">linkedin.com/in/princess-jaena-marie-de-la-peña</a></span>
+    </div>
+</header>
+
+<section>
+    <h2>Profile</h2>
+    <p class="summary">
+        Computer Science student at the University of the Philippines Cebu (class of 2027) working where operations,
+        software, and 3D meet. At Belli I automate air-cargo and finance workflows; at ISCOLab (UPOU) I build VR
+        experiences and optimize 3D assets as a Junior Research Prefect. I have shipped web apps, real-time 3D worlds
+        in the browser, and game-jam games, and I lead partnerships for the UP Computer Science Guild.
+    </p>
+</section>
+
+<section>
+    <h2>Experience</h2>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">Operations Associate &amp; Automation Specialist <em>· Belli</em></div>
+            <div class="when">2026 – Present</div>
+        </div>
+        <ul>
+            <li>Streamline and automate air-cargo operations workflows, applying technical problem-solving to systemize supply-chain logistics.</li>
+            <li>Built the Grab Receipts Matcher, a browser tool that reconciles Grab for Business receipts with Brex card charges for month-end accounting.</li>
+            <li>Oversee back-end administrative processes, workflow automation, and digital strategy execution to improve operational efficiency.</li>
+            <li>Completed intensive international onboarding training in Singapore on scalable operational systems and workflow optimization.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">Junior Research Prefect <em>· ISCOLab, University of the Philippines Open University</em></div>
+            <div class="when">Dec 2025 – Present</div>
+        </div>
+        <ul>
+            <li>Developed BinItBetter, a gamified VR sustainability application set in the UP OUverse that teaches proper waste segregation.</li>
+            <li>Create spatial-computing and immersive-technology prototypes aligned with the UN Sustainable Development Goals (SDGs).</li>
+            <li>Optimize 3D assets (meshes, materials, and LOD models) in Blender and Unity for spatial-computing environments.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">Operations Manager &amp; Automation Specialist <em>· VERGE Inc, Watertown, South Dakota (Remote)</em></div>
+            <div class="when">Jul 2024 – Jan 2026</div>
+        </div>
+        <ul>
+            <li>Oversaw back-end operations, workflow automation, and human resources administration.</li>
+            <li>Drove digital growth and lead generation through SEO and digital marketing strategy.</li>
+            <li>Built automated internal tools using Visual Basic and website-builder platforms.</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>Education</h2>
+    <div class="entry">
+        <div class="row">
+            <div class="role">B.S. Computer Science <em>· University of the Philippines Cebu, Cebu City</em></div>
+            <div class="when">2023 – Expected 2027</div>
+        </div>
+        <ul>
+            <li>College Scholar</li>
+            <li>DOST-SEI S&amp;T Undergraduate Scholarship (2023), Department of Science and Technology</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>Selected projects</h2>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">GreenPoint <em>· GIS-based framework for greening interventions</em></div>
+            <div class="when">2025 – Present</div>
+        </div>
+        <div class="meta">Research &amp; Innovation · Co-Creator · Champion, Software Engineering Project Expo 2026 · Finalist, Aboitiz Innovate Cebu 2026, PJDSC 2025, PhilSA 2025</div>
+        <ul>
+            <li>Co-developing a GIS application that analyzes Urban Heat Island (UHI) effects and gives AI-driven greening recommendations to mitigate urban climate impacts.</li>
+            <li>Led the initial design-thinking phase: urban environmental research, spatial-data ideation, and the technical paper pitched across data science and innovation competitions.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">The Garden of Almira <em>· interactive 3D Cebuano folk garden</em></div>
+            <div class="when">2026</div>
+        </div>
+        <div class="meta">Personal Project · Creator &amp; 3D Developer · Babylon.js, JavaScript, WebGL, Web Audio · <a href="https://garden-of-almira.vercel.app">garden-of-almira.vercel.app</a></div>
+        <ul>
+            <li>Built a walkable 3D folk garden of Sugbo (Cebu), inspired by the title <i>Garden of Almira</i> by Erlinda Alburo: 18 native flowers with Cebuano and scientific names, native animals, and a morning-to-night cycle.</li>
+            <li>Kept it real-time in the browser with GPU vertex wind, three levels of detail per plant, distance culling, chunked grass, and a live-generated soundscape with no audio files.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">Grab Receipts Matcher <em>· receipt-to-card reconciliation tool</em></div>
+            <div class="when">2026</div>
+        </div>
+        <div class="meta">Automation, built at Belli · Creator · JavaScript, jsPDF, SheetJS · <a href="https://grab-receipts-matcher.vercel.app">grab-receipts-matcher.vercel.app</a></div>
+        <ul>
+            <li>Turns Grab for Business exports into PDF receipts and matches each trip to its Brex charge by booking ID, amount, and time, including split charges and refunds.</li>
+            <li>Outputs a sorted Excel masterlist with QuickBooks and Brex links and ready-to-paste memos, replacing manual month-end matching.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">Oki Ventures <em>· home services booking &amp; management system</em></div>
+            <div class="when">Ongoing</div>
+        </div>
+        <div class="meta">Startup Web Platform · Co-Creator &amp; Full-Stack Developer</div>
+        <ul>
+            <li>Developing a web platform for booking and managing home services, connecting clients with service workers.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">IBiz <em>· business planning platform for women entrepreneurs</em></div>
+            <div class="when">Jul 2025</div>
+        </div>
+        <div class="meta">Hackathon, IBPAP 2025 · Co-Creator · React, Vite, Tailwind CSS, JavaScript</div>
+        <ul>
+            <li>Built a web app that helps women entrepreneurs refine ideas, generate feasibility reports, and write business plans, with startup guides and a community space.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">PWDIndependence <em>· emergency app for persons with disabilities</em></div>
+            <div class="when">Mar 2025</div>
+        </div>
+        <div class="meta">Hackathon, Komsai Week 2025 · Co-Creator · Python, Flet, SQLAlchemy, Pandas, Scikit-learn (DBSCAN)</div>
+        <ul>
+            <li>Built a distress-signal app with one-button emergency alerts, real-time location tracking, emergency-contact notifications, and medical-info access.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">UNTREAD <em>· 2D game</em></div>
+            <div class="when">2026</div>
+        </div>
+        <div class="meta">Game Jam, UPCSG GameJam 2026 · Game Developer · Godot</div>
+        <ul>
+            <li>Co-created a 2D game around the theme “The Path Less Taken” within the game-jam timeframe.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">Hamuketsu <em>· comedy-driven 2D game</em></div>
+            <div class="when">Jun 2025</div>
+        </div>
+        <div class="meta">Game Project · Co-Creator · HTML, JavaScript, CSS</div>
+        <ul>
+            <li>Developed a pixel-art browser game with themed minigames, using finite state machines for branching choices, puzzles, and escalating difficulty.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">FabLearn XR <em>· semiconductor learning prototype</em></div>
+        </div>
+        <div class="meta">3D Web, Educational · 3D Web Developer · Three.js, HTML5, JavaScript</div>
+        <ul>
+            <li>Built a lightweight interactive 3D demo with step-by-step learning modules and quizzes.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">COOKBOOk <em>· recipe app with a pantry system</em></div>
+            <div class="when">Nov – Dec 2024</div>
+        </div>
+        <div class="meta">Academic Project, Data Structures · Co-Creator · Python, Flet, NLTK</div>
+        <ul>
+            <li>Suggests recipes from available ingredients using tries, hash tables, scapegoat trees, and linked lists, with NLTK lemmatization of ingredients.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">Split &amp; Kanban Board <em>· software engineering projects</em></div>
+        </div>
+        <div class="meta">Academic Projects, Software Engineering · Web Engineering</div>
+        <ul>
+            <li>Split: collaborative expense manager with interactive tracking cards and offline synchronization.</li>
+            <li>Kanban Board: task manager with drag-and-drop workflow tracking and a responsive UI.</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>Technical skills</h2>
+    <dl class="skills">
+        <dt>Web &amp; full-stack</dt><dd>React, React Native, Next.js, Vite, Flutter, Flet, Tailwind CSS, HTML5, CSS3</dd>
+        <dt>Backend &amp; data</dt><dd>Supabase, Prisma, PostgreSQL, SQLAlchemy, Pandas, Scikit-learn</dd>
+        <dt>Languages</dt><dd>TypeScript, JavaScript, Python, C, C++, C#, LaTeX</dd>
+        <dt>3D &amp; games</dt><dd>Blender (LOD modeling, mesh optimization, materials, animation, game assets), Unity, Godot, Three.js, Babylon.js</dd>
+        <dt>Design</dt><dd>Figma (UI/UX wireframing), Canva</dd>
+        <dt>Automation &amp; ops</dt><dd>Workflow automation, Visual Basic, SEO, digital strategy, Google Workspace, scheduling, technical documentation</dd>
+    </dl>
+</section>
+
+<section>
+    <h2>Leadership &amp; organizations</h2>
+    <ul class="compact">
+        <li><b>Partnerships &amp; Linkages Director</b>, UP Computer Science Guild (UPCSG) <span>· 2025 – 2026</span> — manages external partnerships, linkages, and sponsorships</li>
+        <li><b>Partnerships &amp; Linkages Deputy</b>, UPCSG <span>· 2024 – 2025</span></li>
+        <li><b>Representative</b>, Cebu Student Programmer’s Association (CESPA) <span>· 2025 – 2026</span></li>
+        <li><b>InterHigh Programming Competition Mentor</b>, UPCSG Komsai Week <span>· 2025</span></li>
+        <li><b>Partnerships &amp; Sponsorships Co-Head</b>, UPCSG Komsai Week <span>· 2025</span></li>
+        <li><b>Technical Head</b>, UPCSG TekToks <span>· 2023</span></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Volunteer &amp; community</h2>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">Event Volunteer <em>· AWS Student Community Day Cebu 2026 “Built to Build”</em></div>
+            <div class="when">Aug 2026</div>
+        </div>
+        <ul>
+            <li>Handled event operations, stage logistics, and audience facilitation at the UP Cebu Performing Arts Hall for a regional gathering of student builders, speakers, and cloud practitioners.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">Participant &amp; App Designer <em>· UTokyo Virtual Exchange Program (CALL)</em></div>
+            <div class="when">Apr – Jul 2026</div>
+        </div>
+        <ul>
+            <li>Designed Computer-Assisted Language Learning (CALL) app proposals with cross-cultural teams from UPOU, UP Cebu, and the University of Tokyo, applying pedagogical theory and user-centered design.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">Event Volunteer <em>· AWS Community Day Cebu 2025, UP Cebu</em></div>
+            <div class="when">Sep 2025</div>
+        </div>
+        <ul>
+            <li>Supported event operations and facilitation.</li>
+        </ul>
+    </div>
+
+    <div class="entry">
+        <div class="row">
+            <div class="role">Event Volunteer &amp; Organizer <em>· QISTCon.ph 2025</em></div>
+            <div class="when">Jul 30 – Aug 1, 2025</div>
+        </div>
+        <ul>
+            <li>Supported organization, speakers, participants, and event flow at the Philippine Quantum Information, Science &amp; Technology Conference, Jpark Island Resort, Cebu.</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>Trainings, seminars &amp; certifications</h2>
+    <ul class="compact">
+        <li><b>Immersive Making: Art, Design, and Communication in VR/XR</b>, MANGO Workshop <span>· 2026</span></li>
+        <li><b>Panel on Research Ethics: Navigating Human Research</b>, Certificate Module <span>· 2026</span></li>
+        <li><b>DevFest Cebu 2025</b>, Golden Peak Hotel and Suites <span>· Nov 30, 2025</span></li>
+        <li><b>AWS Mini Meetup</b>, University of the Philippines Cebu <span>· Sep 14, 2025</span></li>
+        <li><b>Cipher Cebu: Modern Cryptography Workshop 0</b>, UP Cebu <span>· Sep 10, 2025</span></li>
+        <li><b>PBA-X: Introduction to Blockchain and Polkadot</b>, Polkadot Blockchain Academy <span>· Jul 25, 2025</span></li>
+        <li><b>Notion Cebu PH: Lead Forward Year 2</b>, University of San Jose-Recoletos <span>· May 18, 2025</span></li>
+    </ul>
+</section>
+
+<section>
+    <h2>References</h2>
+    <!-- REFERENCES -->
+    <p class="refs-note">Available upon request.</p>
+    <!-- /REFERENCES -->
+</section>
+
+</body>
+</html>
