@@ -36,9 +36,12 @@ body {
     padding: 0;
 }
 
-/* Overscroll past the footer shows ink, not paper; top bounce stays paper. */
+/* Overscroll: a little peeking sun when pulled down at the top,
+   ink (footer color) when bounced past the bottom. */
 html {
-    background: linear-gradient(var(--paper) 50%, var(--ink) 50%) fixed;
+    background:
+        url('/peek.svg') center 10px / 230px auto no-repeat fixed,
+        linear-gradient(var(--paper) 50%, var(--ink) 50%) fixed;
     background-color: var(--ink);
 }
 
@@ -834,6 +837,45 @@ a {
 .tl-role {
     margin: 6px 0 12px;
     font-weight: 500;
+}
+
+.tl-when p {
+    margin: 0;
+}
+
+.tl-now {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px !important;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.tl-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    margin: 14px 0 0;
+    font-size: 0.9rem;
+}
+
+.tl-links a {
+    color: var(--tomato);
+    text-underline-offset: 3px;
+}
+
+.skill-group li b {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+.skill-group li small {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    line-height: 1.4;
 }
 
 /* contact */

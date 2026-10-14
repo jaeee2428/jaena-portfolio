@@ -25,9 +25,16 @@ export default function SkillsPage() {
                             {g.title}
                         </h2>
                         <ul>
-                            {g.items.map((it) => (
-                                <li key={it}>{it}</li>
-                            ))}
+                            {g.items.map((it) =>
+                                typeof it === 'string' ? (
+                                    <li key={it}>{it}</li>
+                                ) : (
+                                    <li key={it.name}>
+                                        <b>{it.name}</b>
+                                        <small>{it.detail}</small>
+                                    </li>
+                                )
+                            )}
                         </ul>
                         {g.title.includes('3D') && (
                             <p className="hand skill-note">my favourite corner of the toolbox ♥</p>
