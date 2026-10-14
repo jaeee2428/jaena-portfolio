@@ -55,18 +55,15 @@ export default function ProjectsPage() {
                                         {p.status}
                                     </p>
                                 )}
-                                {p.images && (
-                                    <div className="entry-shots">
-                                        {p.images.map((im) => (
-                                            <Image
-                                                key={im.src}
-                                                src={im.src}
-                                                alt={im.alt}
-                                                width={1400}
-                                                height={788}
-                                                sizes="(max-width: 720px) 90vw, 420px"
-                                            />
-                                        ))}
+                                {p.shot && (
+                                    <div className="entry-shots is-single">
+                                        <Image
+                                            src={p.shot.src}
+                                            alt={p.shot.alt}
+                                            width={1400}
+                                            height={788}
+                                            sizes="(max-width: 720px) 90vw, 720px"
+                                        />
                                     </div>
                                 )}
                                 {p.videos && <VideoGrid videos={p.videos} />}

@@ -1349,6 +1349,10 @@ a {
     margin: 6px 0 22px;
 }
 
+.entry-shots.is-single {
+    grid-template-columns: minmax(0, 720px);
+}
+
 .entry-shots img {
     display: block;
     width: 100%;
