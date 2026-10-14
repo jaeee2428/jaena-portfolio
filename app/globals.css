@@ -36,13 +36,12 @@ body {
     padding: 0;
 }
 
-/* Overscroll: a little peeking sun when pulled down at the top,
-   ink (footer color) when bounced past the bottom. */
+/* Overscroll past the footer shows ink, not paper; top bounce stays paper.
+   Native pull-to-refresh is off so the PullToRefresh sun handles it. */
 html {
-    background:
-        url('/peek.svg') center 10px / 230px auto no-repeat fixed,
-        linear-gradient(var(--paper) 50%, var(--ink) 50%) fixed;
+    background: linear-gradient(var(--paper) 50%, var(--ink) 50%) fixed;
     background-color: var(--ink);
+    overscroll-behavior-y: none;
 }
 
 /* Footer always reaches the bottom of the window on short pages. */
@@ -1377,5 +1376,72 @@ a {
 
     .mp-note .doodle-arrow {
         display: none;
+    }
+}
+
+/* ---------- pull to refresh ---------- */
+.ptr {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 14px 26px 10px;
+    background: var(--card);
+    border: 1.5px solid var(--ink);
+    border-top: 0;
+    border-radius: 0 0 28px 28px;
+    box-shadow: 4px 4px 0 var(--butter);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s;
+}
+
+.ptr.is-on {
+    opacity: 1;
+    transition: opacity 0.15s;
+}
+
+.ptr-rays {
+    transform-box: view-box;
+    transform-origin: 140px 52px;
+}
+
+.ptr.is-refreshing .ptr-rays {
+    animation: ptr-spin 0.9s linear infinite;
+}
+
+.ptr.is-refreshing svg {
+    animation: ptr-bob 0.6s ease-in-out infinite alternate;
+}
+
+.ptr-label {
+    font-family: var(--hand);
+    font-size: 1.15rem;
+    color: var(--tomato);
+    line-height: 1;
+    margin-top: 2px;
+}
+
+@keyframes ptr-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ptr-bob {
+    to {
+        transform: translateY(-4px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ptr,
+    .ptr.is-refreshing .ptr-rays,
+    .ptr.is-refreshing svg {
+        animation: none;
+        transition: none;
     }
 }
