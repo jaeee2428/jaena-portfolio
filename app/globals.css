@@ -1445,3 +1445,122 @@ a {
         transition: none;
     }
 }
+
+/* ---------- demo videos ---------- */
+.vgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin: 18px 0 24px;
+}
+
+.vgrid.is-single {
+    grid-template-columns: minmax(0, 560px);
+}
+
+.vcard {
+    margin: 0;
+}
+
+.vcard:nth-child(odd) .vcard-frame {
+    rotate: -0.6deg;
+}
+
+.vcard:nth-child(even) .vcard-frame {
+    rotate: 0.6deg;
+}
+
+.vcard-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1.5px solid var(--ink);
+    border-radius: 14px;
+    background: var(--ink);
+    box-shadow: 5px 5px 0 var(--butter);
+}
+
+.vcard:nth-child(even) .vcard-frame {
+    box-shadow: 5px 5px 0 var(--sky);
+}
+
+.vcard-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.vcard-poster {
+    position: absolute;
+    inset: 0;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    background: none;
+}
+
+.vcard-poster img {
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.3s;
+}
+
+.vcard-poster:hover img,
+.vcard-poster:focus-visible img {
+    transform: scale(1.03);
+    filter: brightness(0.92);
+}
+
+.vcard-play {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    padding-left: 3px;
+    border: 1.5px solid var(--ink);
+    border-radius: 50%;
+    background: var(--tomato);
+    color: var(--card);
+    box-shadow: 3px 3px 0 var(--ink);
+    translate: -50% -50%;
+    transition: scale 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.vcard-poster:hover .vcard-play,
+.vcard-poster:focus-visible .vcard-play {
+    scale: 1.1;
+}
+
+.vcard figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 12px;
+    font-size: 0.92rem;
+}
+
+.vcard figcaption span {
+    font-family: var(--hand);
+    font-size: 1.1rem;
+    color: var(--tomato);
+    line-height: 1.2;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+    .vgrid {
+        grid-template-columns: 1fr;
+    }
+}

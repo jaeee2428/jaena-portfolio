@@ -1,10 +1,11 @@
-import { experience, programs } from '@/lib/data';
+import { experience, programs, slugify } from '@/lib/data';
+import { VideoGrid } from '@/components/VideoCard';
 
 export const metadata = { title: 'Experience' };
 
 function Entry({ e }) {
     return (
-        <article className="tl-item">
+        <article className="tl-item" id={slugify(e.role)}>
             <div className="tl-when">
                 <p>{e.when}</p>
                 {e.current && (
@@ -25,6 +26,7 @@ function Entry({ e }) {
                         <li key={i}>{pt}</li>
                     ))}
                 </ul>
+                {e.media && <VideoGrid videos={e.media} />}
                 {e.links && (
                     <p className="tl-links">
                         {e.links.map((l) => (

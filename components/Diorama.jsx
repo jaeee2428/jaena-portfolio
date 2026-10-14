@@ -384,7 +384,7 @@ function Plane({ hovered, setHovered }) {
             <Hotspot
                 id="plane"
                 label="air cargo ops @ Belli"
-                href="/#now"
+                href="/experience#operations-associate"
                 setHovered={setHovered}
                 labelOffset={[2.55, 0.5, 0]}
             >
@@ -414,6 +414,112 @@ function Plane({ hovered, setHovered }) {
                 </group>
             </Hotspot>
         </group>
+    );
+}
+
+// Sail shape for the bangka: a tall triangle with a little curve on the leech.
+function useSail() {
+    return useMemo(() => {
+        const sh = new THREE.Shape();
+        sh.moveTo(0, 0);
+        sh.lineTo(0, 0.42);
+        sh.quadraticCurveTo(0.12, 0.18, 0.26, 0.02);
+        sh.lineTo(0, 0);
+        return new THREE.ShapeGeometry(sh);
+    }, []);
+}
+
+function Bangka({ hovered, setHovered }) {
+    const boat = useRef();
+    const ripple = useRef();
+    const sail = useSail();
+    useFrame(({ clock }) => {
+        const t = clock.elapsedTime;
+        const h = hovered === 'boat';
+        if (boat.current) {
+            boat.current.position.y = 0.255 + Math.sin(t * 2.1) * 0.012;
+            boat.current.rotation.z = Math.sin(t * 1.7) * (h ? 0.12 : 0.05);
+            boat.current.rotation.y = 0.8 + Math.sin(t * 0.5) * 0.2 + (h ? Math.sin(t * 3) * 0.1 : 0);
+        }
+        if (ripple.current) {
+            const k = (t * 0.45) % 1;
+            ripple.current.scale.setScalar(0.35 + k * 0.6);
+            ripple.current.material.opacity = 0.55 * (1 - k);
+        }
+    });
+    return (
+        <Hotspot
+            id="boat"
+            label="How a Nation Was Made"
+            href="/experience#research-intern"
+            setHovered={setHovered}
+            labelOffset={[-0.25, 1.05, 1.3]}
+        >
+            <group position={[-0.25, 0, 1.3]}>
+                {/* little pond with a sandy rim */}
+                <mesh position={[0, 0.205, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+                    <circleGeometry args={[0.47, 18]} />
+                    <Mat color="#e8d6b0" />
+                </mesh>
+                <mesh position={[0, 0.212, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+                    <circleGeometry args={[0.4, 18]} />
+                    <Mat color={C.sky} roughness={0.35} />
+                </mesh>
+                <mesh ref={ripple} position={[0, 0.216, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+                    <ringGeometry args={[0.36, 0.4, 24]} />
+                    <meshBasicMaterial color={C.cream} transparent opacity={0.5} />
+                </mesh>
+
+                <group ref={boat} position={[0, 0.255, 0]} scale={1.05}>
+                    {/* hull with upswept bow and stern */}
+                    <mesh castShadow>
+                        <boxGeometry args={[0.46, 0.07, 0.13]} />
+                        <Mat color={C.wood} />
+                    </mesh>
+                    <mesh position={[0, -0.04, 0]}>
+                        <boxGeometry args={[0.36, 0.04, 0.09]} />
+                        <Mat color={C.woodDark} />
+                    </mesh>
+                    {[1, -1].map((side) => (
+                        <mesh key={side} position={[side * 0.26, 0.04, 0]} rotation={[0, 0, side * 0.7]} castShadow>
+                            <boxGeometry args={[0.12, 0.05, 0.1]} />
+                            <Mat color={C.wood} />
+                        </mesh>
+                    ))}
+                    {/* bamboo outriggers on cross-poles */}
+                    {[-0.1, 0.1].map((x) => (
+                        <mesh key={x} position={[x, 0.04, 0]}>
+                            <boxGeometry args={[0.025, 0.02, 0.62]} />
+                            <Mat color={C.woodDark} />
+                        </mesh>
+                    ))}
+                    {[0.3, -0.3].map((z) => (
+                        <mesh key={z} position={[0, 0.0, z]} rotation={[0, 0, Math.PI / 2]}>
+                            <cylinderGeometry args={[0.018, 0.018, 0.44, 6]} />
+                            <Mat color={C.butter} />
+                        </mesh>
+                    ))}
+                    {/* mast + striped sail */}
+                    <mesh position={[0.02, 0.24, 0]} castShadow>
+                        <cylinderGeometry args={[0.012, 0.014, 0.42, 6]} />
+                        <Mat color={C.woodDark} />
+                    </mesh>
+                    <group position={[0.035, 0.06, 0]}>
+                        <mesh geometry={sail} castShadow>
+                            <meshStandardMaterial color={C.cream} side={THREE.DoubleSide} flatShading roughness={0.9} />
+                        </mesh>
+                        <mesh geometry={sail} position={[0, 0.0, 0.002]} scale={[0.55, 0.3, 1]}>
+                            <meshStandardMaterial color={C.tomato} side={THREE.DoubleSide} flatShading roughness={0.9} />
+                        </mesh>
+                    </group>
+                    {/* tiny pennant */}
+                    <mesh position={[0.045, 0.46, 0]}>
+                        <boxGeometry args={[0.06, 0.03, 0.005]} />
+                        <Mat color={C.butter} />
+                    </mesh>
+                </group>
+            </group>
+        </Hotspot>
     );
 }
 
@@ -482,6 +588,7 @@ function Scene({ reduced, labelRef, onHover }) {
                 <MapPin hovered={hovered} setHovered={setHovered} />
                 <GameCube hovered={hovered} setHovered={setHovered} />
                 <Plane hovered={hovered} setHovered={setHovered} />
+                <Bangka hovered={hovered} setHovered={setHovered} />
                 <Cloud position={[-2.6, 2.4, -1.6]} scale={0.9} />
                 <Cloud position={[2.4, 2.9, -2.2]} scale={0.7} speed={0.2} />
                 <Cloud position={[-2.3, -0.7, 1.2]} scale={0.55} speed={0.12} />

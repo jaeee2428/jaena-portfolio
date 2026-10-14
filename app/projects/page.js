@@ -1,6 +1,7 @@
 import { projects, slugify } from '@/lib/data';
 import Image from 'next/image';
 import { Shape } from '@/components/Doodles';
+import { VideoGrid } from '@/components/VideoCard';
 
 export const metadata = { title: 'Projects' };
 
@@ -68,6 +69,7 @@ export default function ProjectsPage() {
                                         ))}
                                     </div>
                                 )}
+                                {p.videos && <VideoGrid videos={p.videos} />}
                                 {p.honors?.length > 0 && (
                                     <ul className="honors">
                                         {p.honors.map((h) => (

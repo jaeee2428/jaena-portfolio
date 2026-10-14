@@ -1,4 +1,4 @@
-import { leadership, volunteering } from '@/lib/data';
+import { leadership, volunteering, trainings } from '@/lib/data';
 
 export const metadata = { title: 'Leadership & Community' };
 
@@ -57,6 +57,26 @@ export default function LeadershipPage() {
                         </article>
                     ))}
                 </div>
+            </section>
+
+            <section className="section">
+                <h2 className="section-title">Trainings &amp; certifications</h2>
+                <ul className="roles">
+                    {trainings.map((t) => (
+                        <li key={t.title}>
+                            <span className="roles-when">{t.when}</span>
+                            <span className="roles-what">
+                                <b>{t.title}</b>
+                                <span>{t.org}</span>
+                                {t.cert && (
+                                    <a className="now-doc" href={t.cert} target="_blank" rel="noopener noreferrer">
+                                        certificate ↗
+                                    </a>
+                                )}
+                            </span>
+                        </li>
+                    ))}
+                </ul>
             </section>
         </div>
     );
