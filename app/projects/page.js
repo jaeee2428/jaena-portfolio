@@ -60,8 +60,8 @@ export default function ProjectsPage() {
                                         <Image
                                             src={p.shot.src}
                                             alt={p.shot.alt}
-                                            width={1400}
-                                            height={788}
+                                            width={p.shot.width ?? 1400}
+                                            height={p.shot.height ?? 788}
                                             sizes="(max-width: 720px) 90vw, 720px"
                                         />
                                     </div>
