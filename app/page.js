@@ -51,7 +51,14 @@ export default function HomePage() {
                     {quickFacts.map((f) => (
                         <div key={f.label}>
                             <dt>{f.label}</dt>
-                            <dd>{f.value}</dd>
+                            <dd>
+                                {f.value}
+                                {f.link && (
+                                    <a className="now-doc" href={f.link.href} target="_blank" rel="noopener noreferrer">
+                                        {f.link.label} ↗
+                                    </a>
+                                )}
+                            </dd>
                         </div>
                     ))}
                 </dl>

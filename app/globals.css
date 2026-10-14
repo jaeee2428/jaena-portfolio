@@ -418,6 +418,16 @@ a {
     line-height: 1.4;
 }
 
+.now-doc {
+    display: block;
+    width: fit-content;
+    margin-top: 2px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--tomato);
+    text-underline-offset: 3px;
+}
+
 /* ---------- about ---------- */
 .split {
     display: grid;
