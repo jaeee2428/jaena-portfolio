@@ -25,6 +25,11 @@ export default function LeadershipPage() {
                                 <b>{l.role}</b>
                                 <span>{l.org}</span>
                                 {l.detail && <small>{l.detail}</small>}
+                                {l.link && (
+                                    <a className="now-doc" href={l.link.href} target="_blank" rel="noopener noreferrer">
+                                        {l.link.label} ↗
+                                    </a>
+                                )}
                             </span>
                         </li>
                     ))}
