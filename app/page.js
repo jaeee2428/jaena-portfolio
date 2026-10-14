@@ -18,7 +18,7 @@ export default function HomePage() {
                     </h1>
                     <p className="hero-full">Princess Jaena Marie O. De La Peña</p>
                     <p className="hero-lead">
-                        I study computer science at UP Cebu, keep air-cargo operations running at Belli,
+                        I study computer science at the University of the Philippines, keep air-cargo operations running at Belli,
                         and build small worlds in <mark>3D</mark>, <mark className="m2">VR</mark>, and{' '}
                         <mark className="m3">games</mark> on the side.
                     </p>

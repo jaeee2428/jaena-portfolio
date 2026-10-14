@@ -18,7 +18,7 @@ export const metadata = {
         template: '%s · Princess Jaena De La Peña',
     },
     description:
-        'Portfolio of Princess Jaena Marie O. De La Peña — Computer Science student at UP Cebu, operations & automation specialist, immersive technology and game developer.',
+        'Portfolio of Princess Jaena Marie O. De La Peña — Computer Science student at the University of the Philippines, operations & automation specialist, immersive technology and game developer.',
 };
 
 export default function RootLayout({ children }) {
