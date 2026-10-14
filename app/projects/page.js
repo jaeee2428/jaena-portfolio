@@ -15,9 +15,9 @@ export default function ProjectsPage() {
                 <p className="hand">things I&apos;ve built</p>
                 <h1 className="page-title">Projects</h1>
                 <p className="page-lead">
-                    Led by The Garden of Almira, a walkable 3D folk garden of Cebu, plus research,
-                    hackathons, game jams, and coursework: a GIS climate tool, a VR waste-segregation game,
-                    business-planning apps, and a few games I genuinely enjoyed making.
+                    {projects.length} projects, from a walkable 3D folk garden of Cebu and VR prototypes
+                    for the lab to a GIS map for greener cities, automation tools for work, and a few
+                    game-jam games. Press play on a demo, or open the live sites.
                 </p>
             </header>
 
